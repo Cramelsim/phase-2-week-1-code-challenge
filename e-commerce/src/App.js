@@ -54,16 +54,18 @@ function App() {
   // Function to update quantity of products in the cart
   const onUpdateQuantity = (id, newQuantity) => {
     if (newQuantity <= 0) {
-      onRemoveFromCart(id);
+      onRemoveFromCart(id); // Remove the item if quantity is 0 or less
     } else {
-      setCart((prevCart) =>
-        prevCart.map((item) =>
-          item.id === id ? { ...item, quantity: newQuantity } : item
+      setCart((prevCart) => 
+        prevCart.map((item) => 
+          item.id === id 
+            ? { ...item, quantity: newQuantity } // Update quantity for the specific product
+            : item // Keep the other items unchanged
         )
       );
     }
   };
-  console.log('onUpdateQuantity function:', onUpdateQuantity);
+  
 
   // Function to remove products from the cart
  
