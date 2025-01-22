@@ -29,7 +29,7 @@ This is a simple E-Commerce store built using React. Users can browse products, 
 2. Navigate to the project directory.
 
     ```bash
-    cd e-commerce-store
+    cd e-commerce-cart
     ```
 
 3. Install the dependencies.
