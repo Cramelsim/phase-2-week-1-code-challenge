@@ -1,66 +1,87 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
+import { products } from './data/products';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
-import SearchSort from './components/SearchSort';
 import './App.css';
 
+function Searchsort({ searchTerm, setSearchTerm, handleSort, sortConfig }) {
+  return (
+    <div className="search-sort">
+      <header>
+        <h1>E-Commerce Store</h1>
+        <div>
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button onClick={() => handleSort('name')}>
+            Sort by Name {sortConfig.key === 'name' ? (sortConfig.direction === 'asc' ? '↑' : '↓') : ''}
+          </button>
+          <button onClick={() => handleSort('price')}>
+            Sort by Price {sortConfig.key === 'price' ? (sortConfig.direction === 'asc' ? '↑' : '↓') : ''}
+          </button>
+        </div>
+      </header>
+    </div>
+  );
+}
+
 function App() {
-  const [products] = useState(initialProducts);
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const [productList] = useState(products);
+  const [cart, setCart] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
+  const [sortConfig, setSortConfig] = useState({ key: '', direction: 'asc' });
 
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
-
-  const addToCart = (product) => {
-    setCart(prevCart => {
-      const existingItem = prevCart.find(item => item.id === product.id);
-      if (existingItem) {
-        return prevCart.map(item =>
+  // Function to add products to the cart
+  const onAddToCart = (product) => {
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find((item) => item.id === product.id);
+      if (existingProduct) {
+        return prevCart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
+      } else {
+        return [...prevCart, { ...product, quantity: 1 }];
       }
-      return [...prevCart, { ...product, quantity: 1 }];
     });
   };
 
-  const removeFromCart = (productId) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== productId));
-  };
 
-  const updateQuantity = (productId, newQuantity) => {
-    if (newQuantity < 1) return;
-    setCart(prevCart =>
-      prevCart.map(item =>
-        item.id === productId
-          ? { ...item, quantity: newQuantity }
-          : item
-      )
-    );
+  // Function to update quantity of products in the cart
+  const onUpdateQuantity = (id, newQuantity) => {
+    if (newQuantity <= 0) {
+      onRemoveFromCart(id);
+    } else {
+      setCart((prevCart) =>
+        prevCart.map((item) =>
+          item.id === id ? { ...item, quantity: newQuantity } : item
+        )
+      );
+    }
   };
+  console.log('onUpdateQuantity function:', onUpdateQuantity);
+
+  // Function to remove products from the cart
+ 
+const onRemoveFromCart = (id) => {
+  setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+};
 
   const handleSort = (key) => {
     setSortConfig(prevConfig => ({
       key,
-      direction:
-        prevConfig.key === key && prevConfig.direction === 'asc'
-          ? 'desc'
-          : 'asc'
+      direction: prevConfig.key === key && prevConfig.direction === 'asc' ? 'desc' : 'asc'
     }));
   };
 
   const getFilteredAndSortedProducts = () => {
-    let filtered = products.filter(product =>
+    let filtered = productList.filter(product =>
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
     if (sortConfig.key) {
       filtered.sort((a, b) => {
         if (a[sortConfig.key] < b[sortConfig.key]) {
@@ -72,33 +93,28 @@ function App() {
         return 0;
       });
     }
-
     return filtered;
   };
 
   return (
     <div className="app">
-      <header>
-        <h1>E-Commerce Store</h1>
-        <SearchSort
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          handleSort={handleSort}
-          sortConfig={sortConfig}
-        />
-      </header>
-
+      <Searchsort
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        handleSort={handleSort}
+        sortConfig={sortConfig}
+      />
       <main>
         <ProductList
           products={getFilteredAndSortedProducts()}
-          addToCart={addToCart}
+          addToCart={onAddToCart}
         />
         <Cart
-          cart={cart}
-          updateQuantity={updateQuantity}
-          removeFromCart={removeFromCart}
-        />
-        <SearchSort/>
+  cart={cart}
+  onUpdateQuantity={onUpdateQuantity}
+  onRemoveFromCart={onRemoveFromCart}  
+/>
+
       </main>
     </div>
   );

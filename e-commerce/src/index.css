@@ -50,7 +50,7 @@ main {
   gap: 20px;
 }
 
-.product-card {
+.product-item {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 15px;
@@ -72,7 +72,7 @@ main {
   border-radius: 4px;
 }
 
-.product-card button {
+.product-item button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -82,7 +82,7 @@ main {
   width: 100%;
 }
 
-.product-card button:hover {
+.product-item button:hover {
   background-color: #0056b3;
 }
 

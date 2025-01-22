@@ -1,13 +1,14 @@
-import React from "react";
+import React from 'react';
 
-function ProductList({ products, onAddToCart }) {
+function ProductList({ products, addToCart}) {
   return (
     <div className="product-list">
       {products.map((product) => (
-        <div key={product.id} className="product-card">
+        <div key={product.id} className="product-item">
           <h3>{product.name}</h3>
-          <p>Price: ${product.price}</p>
-          <button onClick={() => onAddToCart(product)}>Add to Cart</button>
+          <p>Price: Ksh. {product.price}</p>
+          <button onClick={() => addToCart(product)}>Add to Cart</button>
+          
         </div>
       ))}
     </div>
