@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# E-Commerce Cart
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple E-Commerce store built using React. Users can browse products, add them to the cart, modify product quantities, and view the total price of their cart.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Product List**: Displays products with their names, prices, and images.
+- **Search Functionality**: Allows users to search products by name.
+- **Sort Functionality**: Sort products by name or price in ascending or descending order.
+- **Add to Cart**: Users can add products to the cart.
+- **Modify Quantity**: Users can increase or decrease the quantity of products in their cart.
+- **Remove from Cart**: Users can remove products from the cart.
+- **Total Price**: Displays the total price of the products in the cart.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React**: JavaScript library for building user interfaces.
+- **CSS**: Styling for the website.
+- **JavaScript**: Used for logic and interactivity in the application.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Clone this repository to your local machine.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    ```bash
+    git clone https://github.com/yourusername/e-commerce-store.git
+    ```
 
-### `npm run build`
+2. Navigate to the project directory.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ```bash
+    cd e-commerce-store
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Install the dependencies.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```bash
+    npm install
+    ```
 
-### `npm run eject`
+4. Start the development server.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```bash
+    npm start
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. Visit `http://localhost:3000` in your browser to view the app.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Browse Products**: Products are displayed with images, names, and prices.
+2. **Search**: Use the search bar to find products by name.
+3. **Sort**: Sort products by name or price by clicking the respective buttons.
+4. **Add to Cart**: Click the "Add to Cart" button to add a product to your cart.
+5. **Cart Operations**: 
+   - Adjust product quantities using the "+" or "-" buttons in the cart.
+   - Remove products by clicking the "Remove" button.
+6. **Checkout**: View the total price of the products in your cart.
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is open source and available under the [MIT License](LICENSE).
